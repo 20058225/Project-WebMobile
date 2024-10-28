@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="shortcut icon" type="image/x-icon" href="img/houseicon.png">
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <section id="header"></section>    
+        <main class="main">
+            <h2>BM Real State</h2>
+            <form class="formLogin" action="home.html">
+                <div class="divColumn">
+                    <div class="insertForm floatLeft">
+                        <label for="username">Username:</label><br>
+                        <input class="userPwd" type="text" id="username" name="username" required><br>
+                        <label for="pwdLogin">Password:</label><br>
+                        <input class="userPwd" type="password" id="pwdLogin" name="pwdLogin" required><br>
+                    </div>
+                    <div class="floatRight">
+                        <button type="button" id="pwdshowHide" onclick="showHidePwd()">
+                            <img src="img/eye_closed.png" alt="Show/Hide Password" id="pwdIcon">
+                        </button>                    
+                    </div>
+                </div>
+                <div class="btnForm">
+                    <input class="btn" type="submit" value="Submit">
+                    <input class="btn" type="reset" value="Reset">
+                </div>
+              </form>
+        </main>
+        <section id="footer"></section>
+    </body>
+</html>

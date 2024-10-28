@@ -1,0 +1,213 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: Arial, sans-serif;
+    padding: 1em;
+}
+h1, h2, h3, h4, h5{
+    text-align: center;
+}
+main{
+    margin: 20px;
+}
+.main li{
+    margin: 1em;
+}
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+    float: center;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+input.userPwd{
+    margin-bottom: 20px;
+    height: 30px;
+    width: 250px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.showHide{
+    width: 30px;
+    height: 30px;
+}
+.floatLeft{
+    float: left;
+}
+.floatRight{
+    float: right;
+    margin: 90px 0 0 10px;
+}
+.floatRight button{
+    background: none;  
+    border: none;      
+    outline: none;     
+    padding: 0;        
+    cursor: pointer; 
+}
+form.formLogin{
+    display: flex;
+    padding: 30px 30px 30px 100px;
+    background-color: #a7a9d6;
+    font-size: 18px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+form.insertForm label{
+    margin-top: 30px;
+}
+form .btnForm{
+    margin-left: -40px;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #324b9f;
+    font-size: 18px;
+}
+.header ul, ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    /*max-width: 1200px;*/
+}
+.header li, li{
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+}
+.header li a, li{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+.header li a:hover{
+    background-color: #d9d2e9;
+    transition: 0.3s;
+}
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #324b9f;
+    padding: 10px;
+    color: white;
+}
+.footer .column{
+    flex: 1;
+    margin: 10px;
+}
+.footer .column a{
+    text-decoration: none;
+    color: #bcbcbc;
+}
+.footer .column p{
+    color: #ffffff;
+}
+
+@media (max-width: 768px){
+    .header ul{
+        flex-direction: column;
+        text-align: center;
+    }
+    .header li{
+        padding: 10px 0;
+    }
+    .footer{
+        flex-direction: column;
+        align-items: center;
+    }
+   
+}
+
+
+
+
+
+
+
+
+
+/*-- # ANIMATIONS # --*/
+.dot-falling {
+    position: relative;
+    left: -9290px;
+    /*left: -9999px;*/
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    box-shadow: 9999px 0 0 0 #9880ff;
+    animation: dot-falling 1s infinite linear;
+    animation-delay: 0.1s;
+}
+    .dot-falling::before, .dot-falling::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+}
+.dot-falling::before {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dot-falling-before 1s infinite linear;
+    animation-delay: 0s;
+}
+.dot-falling::after {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dot-falling-after 1s infinite linear;
+    animation-delay: 0.2s;
+}
+@keyframes dot-falling {
+    0% {
+        box-shadow: 9999px -15px 0 0 rgba(152, 128, 255, 0);
+    }
+    25%, 50%, 75% {
+        box-shadow: 9999px 0 0 0 #80a0ff;
+    }
+    100% {
+        box-shadow: 9999px 15px 0 0 rgba(152, 128, 255, 0);
+    }
+}
+@keyframes dot-falling-before {
+    0% {
+        box-shadow: 9984px -15px 0 0 rgba(152, 128, 255, 0);
+    }
+    25%, 50%, 75% {
+        box-shadow: 9984px 0 0 0 #9880ff;
+    }
+    100% {
+        box-shadow: 9984px 15px 0 0 rgba(152, 128, 255, 0);
+    }
+}
+@keyframes dot-falling-after {
+    0% {
+        box-shadow: 10014px -15px 0 0 rgba(152, 128, 255, 0);
+    }
+    25%, 50%, 75% {
+        box-shadow: 10014px 0 0 0 #9880ff;
+    }
+    100% {
+        box-shadow: 10014px 15px 0 0 rgba(152, 128, 255, 0);
+    }
+}
+
