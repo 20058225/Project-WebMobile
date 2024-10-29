@@ -1,0 +1,28 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1050; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}.modal-dialog {
+    max-width: 00px; /* Set a max-width for the modal */
+    margin: 1.75rem auto; /* Center the modal */
+}
+.modal-content {
+    background-color: #fff; /* White background */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+}
+.modal-header {
+    border-bottom: none; /* No border on the header */
+}
+.modal-title {
+    margin: 0; /* Remove default margin */
+}
+.close {
+    cursor: pointer; 
+}
