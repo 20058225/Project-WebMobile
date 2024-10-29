@@ -50,3 +50,54 @@ button:hover {
     justify-content: center;
     margin: 10px 30px;
 }
+
+/* # Send Email*/
+.sendEmail {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content horizontally */
+    justify-content: center; /* Centers the content vertically */
+    margin: 20px; /* Adds space around the div */
+    padding: 20px; /* Adds inner space */
+    border: 1px solid #ccc; /* Optional: Add a border */
+    border-radius: 8px; /* Optional: Round the corners */
+    background-color: #f9f9f9; /* Optional: Background color */
+}
+.sendEmail input,
+.sendEmail textarea {
+    width: 90%; /* Full width with some margin */
+    max-width: 400px; /* Limit the max width */
+    padding: 10px; /* Inner padding for inputs */
+    margin: 5px 0; /* Space between inputs */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 4px; /* Round corners */
+}
+.sendEmail h5 {
+    margin: 10px 0; /* Space above and below */
+}
+.contact-info {
+    display: flex; /* Use flexbox to arrange items in a row */
+    align-items: center; /* Center items vertically */
+}
+.contact-info input {
+    width: 183px; /* Set a fixed width or adjust as needed */
+    margin: 0 5px; /* Add space between inputs */
+    padding: 10px; /* Inner padding for inputs */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 4px; /* Round corners */
+}
+.contact-info span {
+    margin: 0 5px; /* Space around the 'or' text */
+}
+.sendEmail button {
+    background-color: #6a329f; /* Green background */
+    color: white; /* White text */
+    padding: 10px 15px; /* Some padding */
+    border: none; /* Remove borders */
+    border-radius: 4px; /* Round corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Space above the button */
+}
+.sendEmail button:hover {
+    background-color: #6a329f; /* Darker green on hover */
+}
