@@ -1,50 +1,61 @@
-* {
-    box-sizing: border-box;
-}
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f7f7f7;
+    color: #333;
 }
 .header {
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    justify-content: space-between; 
+    padding: 15px 20px; 
     background-color: #6a329f;
-    color: white;
+    color: #fff;
+    z-index: 1000; 
 }
-
-.logo {
-    margin-right: auto; 
-    height: 50px; 
-    width: auto;
+.header .logo {
+    height: 50px; /* Ensures logo height */
+    margin-right: 15px;
 }
 
 .header h2 {
-    flex: 1;
-    text-align: center;
+    font-size: 1.5em;
     margin: 0;
+    text-transform: uppercase; /* Adds a bit of emphasis */
+    letter-spacing: 1px; /* Spacing for readability */
 }
 
+.logo {
+    height: 50px;
+    margin-right: 20px;
+}
 h1, h2, h3, h4, h5, h6{
+    flex: 1;
     text-align: center;
     margin: 20px 0;
 }
-input.btn{
-    width: 120px;
-    height: 35px;
-    border-radius: 20%;
-    background-color: #6A329F;
-    color: white;
-    border: none;
-    cursor: pointer;
+.carousel {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
 }
-input.btn:hover{
-    background-color: #d9d2e9;
+.carousel .row{
+    justify-content: space-between;
+    flex-wrap: nowrap;
 }
-.announceBuy, .announceRent {
+.column {
+    width: 45%;
+}
+.column .p{
+    justify-content: space-between;
+    margin: 20px!important;
+}
+.icon{
+    width: 15px;
+    height: auto;
+}
+.announceBuy, .announceRent{
     list-style: none;
     padding: 0;
     margin: 0;
@@ -52,7 +63,7 @@ input.btn:hover{
     flex-wrap: wrap;
     justify-content: center;
 }
-.announceBuy .list, .announceRent .list {
+.announceBuy .list, .announceRent .list{
     width: 250px !important;
     margin: 10px; 
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
@@ -61,11 +72,11 @@ input.btn:hover{
     background-color: #fff;
     transition: transform 0.3s ease;
 }
-.announceBuy a, .announceRent a {
+.announceBuy a, .announceRent a{
     text-decoration: none;
     color: inherit; 
 }
-button.prev-buy, button.next-buy, button.prev-rent, button.next-rent {
+button {
     width: 120px; 
     height: 40px; 
     border-radius: 8px;
@@ -78,16 +89,13 @@ button.prev-buy, button.next-buy, button.prev-rent, button.next-rent {
     display: inline-block;
 }
 button:hover {
-    background-color: #d9d2e9;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 5.5);
 }
 .button-container {
     display: flex;
     justify-content: center; 
-    margin: 10px 0; 
-}
-
-.button-container button {
-    margin: 0 30px; 
+    margin: 10px 30px; 
 }
 .list {
     flex: 1 1 calc(33% - 20px);
@@ -97,8 +105,8 @@ button:hover {
     transition: transform 0.3s ease;
     margin: 10px; 
 }
-.announceBuy .list:hover, .announceRent .list:hover, .logo:hover  {
-    transform: scale(1.02);
+.announceBuy .list:hover, .announceRent .list:hover, .logo:hover {
+    transform: scale(1.05);
 }
 .list-content {
     padding: 15px;
@@ -122,4 +130,33 @@ button:hover {
     width: 100%; /* Make image fill the card width */
     height: auto; /* Maintain aspect ratio */
     display: block;
+}
+/* Styling for the section */
+section .row {
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 20px;
+    margin: 0;
+    gap: 20px; 
+    justify-content: space-between;
+}
+
+.column.announce {
+    flex: 1 1 45%;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.photosHouse {
+    display: flex;
+    gap: 10px;
+}
+
+.photosHouse img {
+    width: 900px;
+    height: 350px;
+    border-radius: 5px;
+    object-fit: cover;
 }

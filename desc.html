@@ -12,22 +12,34 @@
         <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
-        <div class="container">
-            <div class="header">
-                <a href="index.html"><img src="image/logo.png" alt="Logo" class="logo" id="logo"></a>
-                <h2>BM Real Estate Announcements</h2>
+        <div class="header">
+            <a href="index.html"><img src="image/logo.png" alt="Logo" class="logo" id="logo"></a>
+            <h2>BM Real Estate Announcements</h2>
+        </div>
+        <section>
+            <h6 class="title"></h6>
+            <div class="row">
+                <div class="column announce">
+                    <div class="photosHouse">
+                        <img class="kitchen" alt="Kitchen">
+                        <img class="bath" alt="Bathroom">
+                        <img class="room" alt="Room">
+                    </div>
+                    <div class="button-container">
+                        <button class="prev">Previous</button>
+                        <button class="next">Next</button>
+                    </div>                
+                </div>  
+                <div class="column announce">
+                    <h6 class="title"></h6>
+                    <p class="info"></p>
+                    <p class="description"></p>
+                </div>
             </div>
-            <div class="announcement">
-                <p class="type"></p>
-                <h6 class="title"></h6>
-                <img class="image">
-                <p class="moreInfo"></p>               
-            </div>    
-
-
+        </section>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-        <script type="module" src="script/script2.js"></script>
+        <script type="module" src="script/script.js"></script>
     </body>
 </html>
     
