@@ -38,12 +38,26 @@ function displayProduct() {
                         <input type="tel" placeholder="Phone number">
                     </div>
                     <textarea rows="4" cols="51" placeholder="We're here to help! What can we do for you? * " required></textarea>
-                    <button type="submit">Submit</button>
+                    <form method="post">
+                        <button type="button" " onclick="sendEmail()">Send Mail</button>
+                    </form>
                 </div>
                 `;
         }
     });
 }
+function search() {
+    const code = document.getElementById('code').value;
+    const foundItem = data.find(item => item.id == code);
+
+    if (foundItem) {
+        window.location.href = `desc.html?id=${foundItem.id}`;
+    } else {
+        alert('ID does not exist');
+    }
+}
+
+window.search = search; // Ensure global access
 
 function loadIndex() {
     let buyHouse = '';
@@ -90,13 +104,6 @@ function loadIndex() {
     if (announceRentElement) announceRentElement.innerHTML = rentHouse;
 
     $(document).ready(function(){
-        $('.photosHouse').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: false,
-            prevArrow: '.prev',
-            nextArrow: '.next'
-        });
         $('.announceBuy').slick({
             slidesToShow: 3, 
             slidesToScroll: 1,
@@ -146,6 +153,22 @@ document.addEventListener('DOMContentLoaded', () => {
     loadIndex();
     displayProduct();
 });
+
+//Send Email
+// Attach sendEmail to the global window object
+window.sendEmail = function() {
+    Email.send({ 
+        Host: "smtp.gmail.com",
+        Username: "sender@email_address.com",
+        Password: "Enter your password",
+        To: 'receiver@mydbs.ie',
+        From: "sender@email_address.com",
+        Subject: "Sending Email using JavaScript",
+        Body: "Well, that was easy!"
+    }).then(function (message) {
+        alert("Mail sent successfully");
+    });
+};
 
 //Modal
 document.addEventListener('DOMContentLoaded', function() {

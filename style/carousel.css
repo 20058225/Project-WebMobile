@@ -94,6 +94,7 @@
     width: 100%; /* Responsive width */
     height: auto; /* Maintain aspect ratio */
     max-width: 100%; /* Optional max width */
+    cursor: pointer;
 }
 
 .announce {
