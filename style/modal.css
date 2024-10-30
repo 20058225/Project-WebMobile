@@ -25,7 +25,42 @@
 .modal-title {
     margin: 0; /* Remove default margin */
 }
+
+/* Results Modal */
+#resultsModal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+}
+
+#resultsModal .modal-content-search {
+    max-width: 25%;
+    margin: 10% auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-body-search {
+    padding: 20px;
+}
+
+.modal-body-search h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Close button style for results modal */
 .close {
-    cursor: pointer; 
-    margin-left: 15px
+    position: static;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
 }

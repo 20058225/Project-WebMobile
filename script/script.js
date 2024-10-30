@@ -5,12 +5,9 @@ function displayProduct() {
     data.forEach((item) => {
         if (item.id == passedId) {
             document.querySelector('.photosHouse').innerHTML = 
-                `<div class="carousel">
-                    <img class="modal-content" src="${item.kitchenPhoto}" alt="Photo kitchen"> </div>
-                <div class="carousel">
-                    <img class="modal-content" src="${item.bathPhoto}" alt="Photo bath"> </div>
-                <div class="carousel">
-                    <img class="modal-content" src="${item.roomPhoto}" alt="Photo room">  </div>`;
+                `<div><img class="modal-content" src="${item.kitchenPhoto}" alt="Photo kitchen"> </div>
+                <div><img class="modal-content" src="${item.bathPhoto}" alt="Photo bath"> </div>
+                <div><img class="modal-content" src="${item.roomPhoto}" alt="Photo room">  </div>`;
             $('.photosHouse').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1
@@ -46,19 +43,6 @@ function displayProduct() {
         }
     });
 }
-function search() {
-    const code = document.getElementById('code').value;
-    const foundItem = data.find(item => item.id == code);
-
-    if (foundItem) {
-        window.location.href = `desc.html?id=${foundItem.id}`;
-    } else {
-        alert('ID does not exist');
-    }
-}
-
-window.search = search; // Ensure global access
-
 function loadIndex() {
     let buyHouse = '';
     let rentHouse = '';
@@ -66,7 +50,7 @@ function loadIndex() {
     data.forEach((item) => {
         const announcement = `
             <div class="list">
-                <a href="./desc.html?id=${item.id}">
+                <a href="./house.html?id=${item.id}">
                     <div class="list-content">
                         <img src="${item.house}" alt="${item.title}" class="list-image">
                         <div class="list-details">
@@ -134,8 +118,6 @@ function loadIndex() {
         $('.photosHouse').slick({
             slidesToShow: 3, 
             slidesToScroll: 1,
-            autoplay: false,
-            autoplaySpeed: 3000,
             prevArrow: '.prev',
             nextArrow: '.next',
                 responsive: [{
@@ -145,18 +127,13 @@ function loadIndex() {
                     }
                 }]
         });
-
     });
-
 }
 document.addEventListener('DOMContentLoaded', () => {
     loadIndex();
     displayProduct();
 });
-
-//Send Email
-// Attach sendEmail to the global window object
-window.sendEmail = function() {
+window.sendEmail = function() { //# Send Email
     Email.send({ 
         Host: "smtp.gmail.com",
         Username: "sender@email_address.com",
@@ -169,9 +146,61 @@ window.sendEmail = function() {
         alert("Mail sent successfully");
     });
 };
+async function searchTerm() { //# Show modal search
+    // Clear previous results
+    const resultsContainer = document.getElementById("results");
+    resultsContainer.innerHTML = "";
 
-//Modal
-document.addEventListener('DOMContentLoaded', function() {
+    // Get the search term
+    const searchInput = document.getElementById("searchInput").value.trim().toLowerCase();
+    
+    if (!searchInput) {
+        alert("Please enter a search term.");
+        return;
+    }
+
+    try {
+        // Fetch data from the JSON file
+        const response = await fetch('./script/data.json');
+        const data = await response.json();
+
+        // Filter data based on the search term
+        const filteredResults = data.filter(item => 
+            item.title?.toLowerCase().includes(searchInput) || 
+            item.price?.toLowerCase().includes(searchInput) ||
+            item.location?.toLowerCase().includes(searchInput)
+        );
+
+        // Wait for the new window to load before accessing its DOM
+        const resultsModal = document.getElementById("resultsModal");
+        resultsModal.style.display = 'block';
+
+            // Display results
+            if (filteredResults.length > 0) {
+                filteredResults.forEach(item => {
+                    const resultDiv = document.createElement("div");
+                    resultDiv.classList.add("result");
+                    
+                    resultDiv.innerHTML = `
+                    <div class="modal-dialog-search" role="document">
+                        <div class="modal-body-search">
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <h2>Search Results</h2>
+                            <p><a href="house.html?id=${item.id}">ID:${item.id} ${item.title}</a></p>
+                            <p>Price: ${item.price}</p>
+                            <p>Location:${item.location}</p>
+                    </div></div>`;
+                    resultsContainer.appendChild(resultDiv);
+                });
+            } else {
+                resultsContainer.innerHTML = "<p>No results found! Please, try again.</p>";
+            }
+    } catch (error) {
+        console.error("Error fetching the JSON file:", error);
+        resultsContainer.innerHTML = "<p>Error loading data.</p>";
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {  //# Modal Show photos
     const photos = document.querySelectorAll('.photosHouse img'); // Select all images in photosHouse
     const modal = document.getElementById('photoModal'); // Get the modal
     const modalImage = document.getElementById('modalImage'); // Get the modal image
@@ -182,12 +211,15 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'block'; // Show the modal
         });
     });
-    /*document.querySelector('.close').addEventListener('click', function() {
+    document.querySelector('.close').addEventListener('click', function() {
         modal.style.display = 'none'; // Hide the modal
-    });*/
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.style.display = 'none'; // Hide the modal
-        }
     });
+});
+function closeModal() { //# Close resultsModal
+    const resultsModal = document.getElementById("resultsModal");
+    if (resultsModal) resultsModal.style.display = "none";
+}
+document.addEventListener('DOMContentLoaded', function() {  //# force  global access
+    window.searchTerm = searchTerm; 
+    window.closeModal = closeModal; 
 });

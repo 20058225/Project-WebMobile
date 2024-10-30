@@ -11,14 +11,19 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="style/carousel.css">
+        <link rel="stylesheet" href="style/modal.css">
     </head>
     <body>
         <div class="header">
             <a href="index.html"><img src="image/logo.png" alt="Logo" class="logo" id="logo"></a>
             <h2>Welcome to BM Real Estate!</h2>
-            <input type="text" id="code"><input type="button" value="Search" onclick="search()">
+            <input type="text" id="searchInput"><input id="searchTerm" type="button" value="Search" onclick="searchTerm()">
         </div>
-        <section id="modal"></section>    
+        <div class="modal-search" id="resultsModal" style="display: none;">
+            <div class="modal-content-search">
+                <div id="results"></div>
+            </div>
+        </div>
         <div class="carousel">
             <div class="column buy">
                 <h4>Homebuyer Announcements</h4>
@@ -39,8 +44,21 @@
                 </div>
             </div>                
         </div>
+        <footer class="footer">
+            <div class="column">
+                <p><b>Authors: </b>Brenda Lopes & Marcelly Pedra</p><br>
+                <a href="mailto:20058225@mydbs.ie">20058225@mydbs.ie</a><br>
+                <a href="mailto:20040674@mydbs.ie">20040674@mydbs.ie</a><br>
+                <br><br>
+                <a href="tel:+3530839999999">+353 (083)999-9999</a>
+            </div>
+            <div class="column">
+                <p><i><b> "Since 2024 helping you to find your home sweet home"</b></i></p>
+            </div>           
+        </footer>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-        <script type="module" src="script/script.js"></script>       
+        <script type="module" src="script/script.js"></script>    
     </body>
 </html>

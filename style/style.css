@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
     color: #333;
+    padding-bottom: 60px;
 }
 .header {
     position: sticky;
@@ -10,7 +11,7 @@ body {
     align-items: center;
     justify-content: center; 
     padding: 15px 20px; 
-    background-color: #6a329f;
+    background-color: #324b9f;
     color: #fff;
     z-index: 1000;
 }
@@ -26,22 +27,52 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #324b9f;
+    padding: 10px;
+    color: white;
+    position: fixed; /* Change to fixed */
+    bottom: 0; /* Sticks the footer to the bottom */
+    width: 100%; /* Full width */
+}
+
+.footer .column {
+    flex: 1;
+    margin: 0;
+    text-align: center; /* Center text for all columns */
+}
+
+.footer .column a {
+    text-decoration: none;
+    color: #bcbcbc;
+}
+
+.footer .column a:hover {
+    color: #ffffff;
+}
+
+.footer .column p {
+    color: #ffffff;
+}
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
     margin: 20px 0;
 }
-button {
+button:not(.close) {
     width: 120px;
     height: 40px;
     border-radius: 8px;
-    background-color: #6a329f;
+    background-color: #324b9f;
     color: #fff;
     border: none;
     margin: 10px;
     cursor: pointer;
     text-align: center;
 }
-button:hover {
+button:hover:not(.close) {
     transform: scale(1.05);
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 5.5);
 }
@@ -50,6 +81,9 @@ button:hover {
     justify-content: center;
     margin: 10px 30px;
 }
+.section {
+    margin-bottom: 80px; /* Adjust this value as needed */
+}
 
 /* # Send Email*/
 .sendEmail {
@@ -57,7 +91,7 @@ button:hover {
     flex-direction: column;
     align-items: center; /* Centers the content horizontally */
     justify-content: center; /* Centers the content vertically */
-    margin: 20px; /* Adds space around the div */
+    margin: 150px 0; /* Adds space around the div */
     padding: 20px; /* Adds inner space */
     border: 1px solid #ccc; /* Optional: Add a border */
     border-radius: 8px; /* Optional: Round the corners */
@@ -89,15 +123,23 @@ button:hover {
 .contact-info span {
     margin: 0 5px; /* Space around the 'or' text */
 }
+.header #searchTerm{
+    background-color: #324b9f;
+}
 .sendEmail button {
-    background-color: #6a329f; /* Green background */
-    color: white; /* White text */
+    background-color: #324b9f; /* Green background */
+    color: #fff; /* White text */
     padding: 10px 15px; /* Some padding */
     border: none; /* Remove borders */
     border-radius: 4px; /* Round corners */
     cursor: pointer; /* Pointer cursor on hover */
     margin-top: 10px; /* Space above the button */
 }
-.sendEmail button:hover {
-    background-color: #6a329f; /* Darker green on hover */
+.sendEmail button:hover, .header #searchTerm:hover{
+    transform: scale(1.05);
+    background-color: #324b9f; /* Darker green on hover */
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 5.5);
+}
+.header #searchInput{
+    border-radius: 4px; /* Round corners */
 }
