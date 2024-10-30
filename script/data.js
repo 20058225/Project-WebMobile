@@ -140,7 +140,7 @@ export const data = [
     {
         id: 9,
         code: "BM0009",
-        house: "/photos/house/house9.jpeg",
+        house: "photos/house/house9.jpeg",
         title: "The Heritage Homestead",
         location: "Farmhouse Road, Kentucky",
         description: "An old farmhouse restored to preserve its charm, with exposed brick, wood-beamed ceilings, and vintage decor.",
