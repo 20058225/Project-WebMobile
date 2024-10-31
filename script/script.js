@@ -1,9 +1,6 @@
 import { data } from './data.js';
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Define header HTML content as a template literal
-
-    // Get the header title element
+document.addEventListener("DOMContentLoaded", function() { // # HEADER and FOOTER
     const currentFile = window.location.pathname.split("/").pop();
     const headerHTML = `
             <section class="header">
@@ -13,17 +10,12 @@ document.addEventListener("DOMContentLoaded", function() {
                         <li><a href="index.html">Home</a></li>
                         <li><a href="mortgage.html">Mortgage</a></li>
                         <li><a id="btnSell" href="#Sell">Sell</a></li>
-                    
-                    <!--<div class="search-container">-->
                         <li><input type="text" id="searchInput" placeholder="Search..."><input id="searchTerm" type="button" value="Search" onclick="searchTerm()"></li>
-                    
                     </ul>
                 </div>
                 <h2>${currentFile === "index.html" ? "Welcome to BM Real Estate!" : "BM Real Estate Announcements"}</h2>
                 </nav>
             </section> `;
-
-    // Define footer HTML content as a template literal
     const footerHTML = `
         <section class="footer">
             <div>
@@ -52,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-function displayProduct() {
+function displayProduct() {  // # Show description of houses 
     const passedId = new URLSearchParams(window.location.search).get('id');
     data.forEach((item) => {
         if (item.id == passedId) {
@@ -65,11 +57,9 @@ function displayProduct() {
                 slidesToScroll: 1
             });
             document.querySelector('.next').addEventListener('click', function() {
-                $('.photosHouse').slick('slickNext');
-            });
+                $('.photosHouse').slick('slickNext'); });
             document.querySelector('.prev').addEventListener('click', function() {
-                $('.photosHouse').slick('slickPrev');
-            });
+                $('.photosHouse').slick('slickPrev'); });
             document.querySelector('.infoHouse').innerHTML = `
                 <h4>${item.type === 'buy' ? 'For Sale' : 'For Rent'} : 
                 <b>${item.title}</b> </h4>
@@ -77,24 +67,22 @@ function displayProduct() {
                 <p>Price: ${item.price} ${item.type === 'buy' ? '*<i>check the best option for your mortgage</i>' : '*<i>check the best option for your payment</i>'}</p>
                 <p>Bedrooms: ${item.bed} | Bathrooms: ${item.bath}</p>
                 <p>Location: ${item.location} 
-                    <u><i><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.location)}" target="_blank">Google Maps</a></i></u></p>
+                    <u><i><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.location)}" target="_blank">Google Maps</a></i></u></p> `;
+            document.querySelector('.bookView').innerHTML = `
                 <div class="bookEmail"> 
                     <h5>Do you need further information?</h5>
-                    <input type="text" placeholder="Full name *" required>
                     <div class="contact-info">
+                        <input type="text" placeholder="Full name *" required><br>
                         <input type="email" placeholder="E-mail" required>
-                        <span>and</span>
                         <input type="tel" placeholder="Phone number">
                     </div>
                     <form method="post">
                         <button id="btnBook" type="button">Book a view</button>
-                    </form>
-                </div>
-                `;
+                    </form></div>`;
         }
     });
 }
-function loadIndex() {
+function loadIndex() { // # Show houses on index page
     let buyHouse = '';
     let rentHouse = '';
 
@@ -213,9 +201,7 @@ async function searchTerm() { //# Show modal search
         // Wait for the new window to load before accessing its DOM
         const resultsModal = document.getElementById("resultsModal");
         resultsModal.style.display = 'block';
-
-            // Display results
-            if (filteredResults.length > 0) {
+            if (filteredResults.length > 0) {             // Display results
                 filteredResults.forEach(item => {
                     const resultDiv = document.createElement("div");
                     resultDiv.classList.add("result");
@@ -232,7 +218,9 @@ async function searchTerm() { //# Show modal search
                     resultsContainer.appendChild(resultDiv);
                 });
             } else {
-                resultsContainer.innerHTML = "<p>No results found! Please, try again.</p>";
+                resultsContainer.innerHTML = `
+                    <span class='close' onclick='closeModal()'>&times;</span>
+                    <p>No results found! Please, try again.</p>`;
             }
     } catch (error) {
         console.error("Error fetching the JSON file:", error);
@@ -254,34 +242,29 @@ document.addEventListener('DOMContentLoaded', function() {  //# Modal Show photo
         modal.style.display = 'none'; // Hide the modal
     });
 });
-$(document).ready(function() {
-    // Show the Sell modal when clicking on the 'Sell' button
-    $("#btnSell").click(function(event) {
+$(document).ready(function() { // Show the SellModal and ContactModal when clicking on their button
+    $("#btnSell").click(function(event) { // open modal sell
         event.preventDefault();
         $("#modalSell").css("display", "block");
     });
-    $("#btnBook").click(function(event) {
+    $("#btnBook").click(function(event) { // open modal contact
         event.preventDefault();
         $("#contactModal").css("display", "block");
     });
 
-    // Close modals when clicking the 'close' button
-    $(".close").click(function() {
+    $(".close").click(function() { // close modal sell
         $(".modal-sell").css("display", "none");
     });
     $(".close").click(function() {
         $(".modal-contact").css("display", "none");
     });
-
-    // Handle form submission
-    $("#sellForm").submit(function(event) {
+    $("#sellForm").submit(function(event) { // Close sell modal and open contact modal
         event.preventDefault();
         $("#modalSell").css("display", "none"); // Close Sell modal
         $("#contactModal").css("display", "block"); // Show confirmation modal
     });
 });
-
-function closeModal() { //# Close resultsModal
+function closeModal() { // # Close resultsModal
     const resultsModal = document.getElementById("resultsModal");
     if (resultsModal) resultsModal.style.display = "none";
 }

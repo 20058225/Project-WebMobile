@@ -25,10 +25,8 @@
             <div class="modal-dialog-house" role="document">
                 <div class="modal-content-house">
                     <div class="modal-header-house">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
                         <h5 class="modal-title-house">House Photos</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div class="modal-body">
                         <img id="modalImage" src="" alt="House Photo" class="img-fluid">
@@ -36,15 +34,16 @@
                 </div>
             </div>
         </div>
-        <div class="modal-search" id="resultsModal" style="display: none;">
+        <div class="modal-search" id="resultsModal">
             <div class="modal-content-search">
                 <div id="results"></div>
             </div>
         </div>
-        <div id="modalSell" class="modal-sell">
+        <div id="modalSell" class="modal-sell" role="dialog">
+            <div class="modal-dialog-sell" role="document">
             <div class="modal-content-sell">
-                <div class="modal-header">
-                    <h5 class="modal-title">Sell</h5>
+                <div class="modal-header-sell">
+                    <h5 class="modal-title-sell">Sell</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
                 </div>
                 <div class="modal-body-sell">
@@ -63,6 +62,7 @@
                         <button type="submit" class="btn">Submit</button>
                     </form>
                 </div>      
+                </div>
             </div>
         </div> 
         <!-- Confirmation Modal -->
@@ -78,18 +78,18 @@
             </div>
         </div>
         <section class="section">
-            <h6 class="title"></h6>
-            <div class="row">
-                <div class="column announce">
-                    <div class="photosHouse"></div>
-                    <div class="button-container">
-                        <button class="prev">Previous</button>
-                        <button class="next">Next</button>
-                    </div>  
+            <div class="announce">
+                <div class="photosHouse"></div>
+                <div class="button-container">
+                    <button class="prev">Previous</button>
+                    <button class="next">Next</button>
                 </div>  
-                <div class="column announce">
-                    <div class="infoHouse"></div>
-                </div>
+            </div>  
+            <div class="announce">
+                <div class="infoHouse"></div>
+            </div>
+            <div class="announce">
+                <div class="bookView"></div>
             </div>
         </section>
         <section id="showFooter"></section>    

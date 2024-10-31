@@ -17,7 +17,6 @@
     background-color: #fff; /* White background */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
-    align-items: center;
 }
 .modal-header-house {
     border-bottom: none; /* No border on the header */

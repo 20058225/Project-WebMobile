@@ -1,11 +1,9 @@
 :root {
     --header-height: 180px; /* header size to be adapt */
 }
-
 .carousel, .main, .section {
     padding-top: var(--header-height)!important;
 }
-
 body {
     height: 1000px;
     font-family: Arial, sans-serif;
@@ -14,14 +12,21 @@ body {
     padding-bottom: 60px;
 }
 .header {
-    text-align: center; /* Center the h2 */
-    padding: 20px 0; /* Add some vertical space around the header */
+    position: fixed; /* or 'fixed' */
+    flex-wrap: wrap;
+    top: 0;
+    z-index: 1000; /* Ensure it’s on top of other elements */
+    color: #fff;
+    width: 100%; /* Full width */
+    padding-top: 20px; /* Add some vertical space around the header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .nav-container {
     display: flex; /* Enable flexbox */
     justify-content: space-around; /* Space items around */
     align-items: center; /* Align items vertically centered */
-    padding: 10px; /* Add some padding if needed */
 }
 .nav-list {
     list-style-type: none; /* Remove default list styling */
@@ -39,16 +44,17 @@ body {
     text-transform: uppercase;
     color: #fff;
 }
-/* Optional styles for logo and search */
 .logo {
     height: 50px; /* Adjust logo height */
 }
-
+.header h2 {
+    margin: 15px 0px;
+    padding-top: 10px;
+    box-shadow: 1px -2px 2px -1px rgba(0, 0, 0, 0.5);
+}
 #searchInput {
     margin-right: 5px; /* Space between input and button */
 }
-
-
 .search-container {
     display: flex; /* Use flexbox for search input and button */
     align-items: center; /* Center items vertically */
@@ -99,7 +105,6 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
-    margin: 20px 0;
 }
 button:not(.close) {
     width: 120px;
@@ -121,7 +126,6 @@ button:hover:not(.close) {
     justify-content: center;
     margin: 10px 30px;
 }
-
 /* # bookEmail*/
 .bookEmail {
     display: flex;
@@ -135,7 +139,6 @@ button:hover:not(.close) {
     background-color: #f9f9f9; /* Optional: Background color */
 }
 .bookEmail input {
-    width: 90%; /* Full width with some margin */
     max-width: 400px; /* Limit the max width */
     padding: 10px; /* Inner padding for inputs */
     margin: 5px 0; /* Space between inputs */
@@ -150,7 +153,6 @@ button:hover:not(.close) {
     align-items: center; /* Center items vertically */
 }
 .contact-info input {
-    width: 177px; /* Set a fixed width or adjust as needed */
     margin: 0 5px; /* Add space between inputs */
     padding: 10px; /* Inner padding for inputs */
     border: 1px solid #ccc; /* Border for inputs */
@@ -176,7 +178,12 @@ button:hover:not(.close) {
     background-color: #324b9f; /* Darker green on hover */
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 5.5);
 }
-
 .header #searchInput{
     border-radius: 4px; /* Round corners */
+}
+.section{
+    margin: auto;
+    width: 50%;
+    border: 3px solid #e0e0e0;
+    padding: 10px;
 }

@@ -73,11 +73,6 @@
     font-size: 14px;
     white-space: nowrap;
 }
-.row {
-    margin: 50px;
-    max-width: 100%;
-    margin-bottom: 80px; /* Adjust this value as needed */
-}
 .column {
     flex: 1; /* Allow columns to grow equally */
     max-width: 45%; /* Ensure they don't exceed this width */
