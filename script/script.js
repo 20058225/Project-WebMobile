@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
             <div>
                 <p>Brenda Lopes</p>
                 <a href="mailto:20058225@mydbs.ie" target="_blank">20058225@mydbs.ie</a> 
+            </div>
+            <div>
                 <p>Marcelly Pedra</p> 
                 <a href="mailto:20040674@mydbs.ie" target="_blank">20040674@mydbs.ie</a>
             </div>

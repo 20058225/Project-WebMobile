@@ -23,14 +23,12 @@ body {
     align-items: center; /* Align items vertically centered */
     padding: 10px; /* Add some padding if needed */
 }
-
 .nav-list {
     list-style-type: none; /* Remove default list styling */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
+    padding: 0; 
+    margin: 0; 
     display: flex; /* Display items in a row */
 }
-
 .nav-list li {
     display: flex; /* Flex for li elements */
     align-items: center; /* Center the content vertically */
@@ -83,7 +81,7 @@ body {
 .footer{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     color: #fff;
     background-color: #324b9f;
     padding: 10px;
