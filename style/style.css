@@ -1,61 +1,103 @@
+:root {
+    --header-height: 180px; /* header size to be adapt */
+}
+
+.carousel, .main, .section {
+    padding-top: var(--header-height)!important;
+}
+
 body {
+    height: 1000px;
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
     color: #333;
     padding-bottom: 60px;
 }
 .header {
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    padding: 15px 20px; 
-    background-color: #324b9f;
-    color: #fff;
-    z-index: 1000;
+    text-align: center; /* Center the h2 */
+    padding: 20px 0; /* Add some vertical space around the header */
 }
-.header .logo {
-    height: 50px;
-    margin-right: 15px;
+.nav-container {
+    display: flex; /* Enable flexbox */
+    justify-content: space-around; /* Space items around */
+    align-items: center; /* Align items vertically centered */
+    padding: 10px; /* Add some padding if needed */
 }
-.header h2 {
-    flex-grow: 1; 
-    font-size: 1.5em;
-    text-align: center; 
-    margin: 0;
+
+.nav-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: flex; /* Display items in a row */
+}
+
+.nav-list li {
+    display: flex; /* Flex for li elements */
+    align-items: center; /* Center the content vertically */
+    margin: 0 100px 0 50px;
+}
+.nav-list li:not(:last-child), .nav-list li:not(:last-child) a , h2{ 
+    font-size: 25px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    color: #fff;
 }
-.footer {
+/* Optional styles for logo and search */
+.logo {
+    height: 50px; /* Adjust logo height */
+}
+
+#searchInput {
+    margin-right: 5px; /* Space between input and button */
+}
+
+
+.search-container {
+    display: flex; /* Use flexbox for search input and button */
+    align-items: center; /* Center items vertically */
+}
+#searchInput {
+    padding: 5px; /* Add some padding */
+    margin-right: 5px; /* Space between input and button */
+}
+.header #searchInput {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+.header #searchTerm {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    color: #324b9f;
+    font-weight: bold;
+    cursor: pointer;
+}
+.header #searchTerm:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 5.5);
+}
+.logo{
+    height: 70px;
+    width: auto;
+}
+.footer{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    color: #fff;
     background-color: #324b9f;
     padding: 10px;
-    color: white;
+    column-count: 2; /* new */
+    column-width: auto;/* new */
+    text-align: justify;/* new */
+    vertical-align:text-bottom;/* new */
     position: fixed; /* Change to fixed */
     bottom: 0; /* Sticks the footer to the bottom */
     width: 100%; /* Full width */
 }
-
-.footer .column {
-    flex: 1;
-    margin: 0;
-    text-align: center; /* Center text for all columns */
-}
-
-.footer .column a {
-    text-decoration: none;
-    color: #bcbcbc;
-}
-
-.footer .column a:hover {
-    color: #ffffff;
-}
-
-.footer .column p {
-    color: #ffffff;
+.footer a {
+    color: #fff;
+    padding-bottom: 2px;
 }
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
@@ -81,12 +123,9 @@ button:hover:not(.close) {
     justify-content: center;
     margin: 10px 30px;
 }
-.section {
-    margin-bottom: 80px; /* Adjust this value as needed */
-}
 
-/* # Send Email*/
-.sendEmail {
+/* # bookEmail*/
+.bookEmail {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centers the content horizontally */
@@ -97,8 +136,7 @@ button:hover:not(.close) {
     border-radius: 8px; /* Optional: Round the corners */
     background-color: #f9f9f9; /* Optional: Background color */
 }
-.sendEmail input,
-.sendEmail textarea {
+.bookEmail input {
     width: 90%; /* Full width with some margin */
     max-width: 400px; /* Limit the max width */
     padding: 10px; /* Inner padding for inputs */
@@ -106,7 +144,7 @@ button:hover:not(.close) {
     border: 1px solid #ccc; /* Border for inputs */
     border-radius: 4px; /* Round corners */
 }
-.sendEmail h5 {
+.bookEmail h5 {
     margin: 10px 0; /* Space above and below */
 }
 .contact-info {
@@ -114,7 +152,7 @@ button:hover:not(.close) {
     align-items: center; /* Center items vertically */
 }
 .contact-info input {
-    width: 183px; /* Set a fixed width or adjust as needed */
+    width: 177px; /* Set a fixed width or adjust as needed */
     margin: 0 5px; /* Add space between inputs */
     padding: 10px; /* Inner padding for inputs */
     border: 1px solid #ccc; /* Border for inputs */
@@ -123,10 +161,10 @@ button:hover:not(.close) {
 .contact-info span {
     margin: 0 5px; /* Space around the 'or' text */
 }
-.header #searchTerm{
+.header {
     background-color: #324b9f;
 }
-.sendEmail button {
+.bookEmail button {
     background-color: #324b9f; /* Green background */
     color: #fff; /* White text */
     padding: 10px 15px; /* Some padding */
@@ -135,11 +173,12 @@ button:hover:not(.close) {
     cursor: pointer; /* Pointer cursor on hover */
     margin-top: 10px; /* Space above the button */
 }
-.sendEmail button:hover, .header #searchTerm:hover{
+.bookEmail button:hover{
     transform: scale(1.05);
     background-color: #324b9f; /* Darker green on hover */
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 5.5);
 }
+
 .header #searchInput{
     border-radius: 4px; /* Round corners */
 }

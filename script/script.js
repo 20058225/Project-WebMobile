@@ -1,13 +1,63 @@
 import { data } from './data.js';
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Define header HTML content as a template literal
+
+    // Get the header title element
+    const currentFile = window.location.pathname.split("/").pop();
+    const headerHTML = `
+            <section class="header">
+                <nav> <div class="nav-container">
+                    <ul class="nav-list">
+                        <li><a href="index.html"><img src="image/logo.png" alt="Logo" class="logo" id="logo"></a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="mortgage.html">Mortgage</a></li>
+                        <li><a id="btnSell" href="#Sell">Sell</a></li>
+                    
+                    <!--<div class="search-container">-->
+                        <li><input type="text" id="searchInput" placeholder="Search..."><input id="searchTerm" type="button" value="Search" onclick="searchTerm()"></li>
+                    
+                    </ul>
+                </div>
+                <h2>${currentFile === "index.html" ? "Welcome to BM Real Estate!" : "BM Real Estate Announcements"}</h2>
+                </nav>
+            </section> `;
+
+    // Define footer HTML content as a template literal
+    const footerHTML = `
+        <section class="footer">
+            <div>
+                <p>Since ${new Date().getFullYear()} helping you to find your <b>H</b>ome <b>S</b>weet <b>H</b>ome</p>
+                <p>&copy; ${new Date().getFullYear()} My Website. All rights reserved.</p>
+            </div>
+            <div>
+                <p>Brenda Lopes</p>
+                <a href="mailto:20058225@mydbs.ie" target="_blank">20058225@mydbs.ie</a> 
+                <p>Marcelly Pedra</p> 
+                <a href="mailto:20040674@mydbs.ie" target="_blank">20040674@mydbs.ie</a>
+            </div>
+        </section>`;
+        
+    /*document.getElementById("showHeader").innerHTML = headerHTML;
+    document.getElementById("showFooter").innerHTML = footerHTML;*/
+
+    // Insert content
+    const headerContainer = document.getElementById("showHeader");
+    if (headerContainer) headerContainer.innerHTML = headerHTML;
+
+    const footerContainer = document.getElementById("showFooter");
+    if (footerContainer) footerContainer.innerHTML = footerHTML;
+});
+
+
 function displayProduct() {
     const passedId = new URLSearchParams(window.location.search).get('id');
     data.forEach((item) => {
         if (item.id == passedId) {
             document.querySelector('.photosHouse').innerHTML = 
-                `<div><img class="modal-content" src="${item.kitchenPhoto}" alt="Photo kitchen"> </div>
-                <div><img class="modal-content" src="${item.bathPhoto}" alt="Photo bath"> </div>
-                <div><img class="modal-content" src="${item.roomPhoto}" alt="Photo room">  </div>`;
+                `<div><img class="modal-content-house" src="${item.kitchenPhoto}" alt="Photo kitchen"> </div>
+                <div><img class="modal-content-house" src="${item.bathPhoto}" alt="Photo bath"> </div>
+                <div><img class="modal-content-house" src="${item.roomPhoto}" alt="Photo room">  </div>`;
             $('.photosHouse').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1
@@ -26,17 +76,16 @@ function displayProduct() {
                 <p>Bedrooms: ${item.bed} | Bathrooms: ${item.bath}</p>
                 <p>Location: ${item.location} 
                     <u><i><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.location)}" target="_blank">Google Maps</a></i></u></p>
-                <div class="sendEmail"> 
-                    <h5>Do you have any questions or need further information?</h5>
+                <div class="bookEmail"> 
+                    <h5>Do you need further information?</h5>
                     <input type="text" placeholder="Full name *" required>
                     <div class="contact-info">
                         <input type="email" placeholder="E-mail" required>
-                        <span>or</span>
+                        <span>and</span>
                         <input type="tel" placeholder="Phone number">
                     </div>
-                    <textarea rows="4" cols="51" placeholder="We're here to help! What can we do for you? * " required></textarea>
                     <form method="post">
-                        <button type="button" " onclick="sendEmail()">Send Mail</button>
+                        <button id="btnBook" type="button">Book a view</button>
                     </form>
                 </div>
                 `;
@@ -133,19 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadIndex();
     displayProduct();
 });
-window.sendEmail = function() { //# Send Email
-    Email.send({ 
-        Host: "smtp.gmail.com",
-        Username: "sender@email_address.com",
-        Password: "Enter your password",
-        To: 'receiver@mydbs.ie',
-        From: "sender@email_address.com",
-        Subject: "Sending Email using JavaScript",
-        Body: "Well, that was easy!"
-    }).then(function (message) {
-        alert("Mail sent successfully");
-    });
-};
+
 async function searchTerm() { //# Show modal search
     // Clear previous results
     const resultsContainer = document.getElementById("results");
@@ -215,6 +252,33 @@ document.addEventListener('DOMContentLoaded', function() {  //# Modal Show photo
         modal.style.display = 'none'; // Hide the modal
     });
 });
+$(document).ready(function() {
+    // Show the Sell modal when clicking on the 'Sell' button
+    $("#btnSell").click(function(event) {
+        event.preventDefault();
+        $("#modalSell").css("display", "block");
+    });
+    $("#btnBook").click(function(event) {
+        event.preventDefault();
+        $("#contactModal").css("display", "block");
+    });
+
+    // Close modals when clicking the 'close' button
+    $(".close").click(function() {
+        $(".modal-sell").css("display", "none");
+    });
+    $(".close").click(function() {
+        $(".modal-contact").css("display", "none");
+    });
+
+    // Handle form submission
+    $("#sellForm").submit(function(event) {
+        event.preventDefault();
+        $("#modalSell").css("display", "none"); // Close Sell modal
+        $("#contactModal").css("display", "block"); // Show confirmation modal
+    });
+});
+
 function closeModal() { //# Close resultsModal
     const resultsModal = document.getElementById("resultsModal");
     if (resultsModal) resultsModal.style.display = "none";

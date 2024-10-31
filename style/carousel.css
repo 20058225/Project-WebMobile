@@ -82,6 +82,9 @@
     flex: 1; /* Allow columns to grow equally */
     max-width: 45%; /* Ensure they don't exceed this width */
 }
+.column img{
+    size: 10px;
+}
 .announceBuy .list-image, .announceRent .list-image {
     max-width: 100%;
     height: auto;
@@ -98,7 +101,7 @@
     cursor: pointer;
 }
 .announce {
-    flex: 1 1 45%;
+    flex: 0 0 35%;
     box-sizing: border-box;
     background-color: #f9f9f9;
     padding: 20px;
