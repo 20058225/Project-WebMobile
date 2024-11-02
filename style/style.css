@@ -181,23 +181,35 @@ button:hover:not(.close) {
     border: 3px solid #e0e0e0;
     padding: 10px;
 }
-
+.main {
+    margin-top: 15px;
+}
+.main p{
+    margin: 20px 160px;    ;
+}
 @media (max-width: 768px) { /*tablet*/
-    .header{
-        padding: 15px 30px;
+    .header {
         font-size:1.2em;
         flex-direction: column;
         height: auto;
     }
-    .nav-container{
+    .nav-container {
         gap: 15px;
     }
-    .contact-info{
+    .contact-info {
         flex-direction: column;
         align-items:center;
     }
-    .nav-list li{
+    .nav-list li {
         margin:0 10px;
+    }
+    .main h2 {
+        font-size:1.2em;
+        margin-bottom: 15px;
+    }
+    .main p {
+        margin: 0 70px;
+        text-align: justify;
     }
     @media (max-widht: 480px) { /*mobile*/
         .header {
@@ -215,6 +227,14 @@ button:hover:not(.close) {
         .logo {
             height:40px;
             margin-bottom:10px;
+        }
+        .main h2 { 
+            font-size:1.2em;
+            margin-bottom: 15px;
+        }
+        .main p {
+            margin: 0 70px;
+            text-align: justify;
         }
     }
 }
