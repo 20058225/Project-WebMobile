@@ -12,48 +12,54 @@ body {
     padding-bottom: 60px;
 }
 .header {
+    background-color: #324b9f;
     position: fixed; /* or 'fixed' */
-    flex-wrap: wrap;
     top: 0;
     z-index: 1000; /* Ensure it’s on top of other elements */
     color: #fff;
     width: 100%; /* Full width */
-    padding-top: 20px; /* Add some vertical space around the header */
+    padding-top: 10px; /* Add some vertical space around the header */
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.nav-container {
-    display: flex; /* Enable flexbox */
-    justify-content: space-around; /* Space items around */
-    align-items: center; /* Align items vertically centered */
-}
-.nav-list {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0; 
-    margin: 0; 
-    display: flex; /* Display items in a row */
+    flex-direction: column;
 }
 .nav-list li {
     display: flex; /* Flex for li elements */
     align-items: center; /* Center the content vertically */
     margin: 0 100px 0 50px;
-}
-.nav-list li:not(:last-child), .nav-list li:not(:last-child) a , h2{ 
-    font-size: 25px;
     text-transform: uppercase;
+    font-size: 20px;
     color: #fff;
+}
+.nav-item a {
+    color: #fff!important;
+}
+.searchDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.btnNavDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .logo {
     height: 50px; /* Adjust logo height */
+    width: auto;
+}
+.header h3 {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
 }
 .header h2 {
     margin: 15px 0px;
     padding-top: 10px;
     box-shadow: 1px -2px 2px -1px rgba(0, 0, 0, 0.5);
-}
-#searchInput {
-    margin-right: 5px; /* Space between input and button */
 }
 .search-container {
     display: flex; /* Use flexbox for search input and button */
@@ -62,10 +68,8 @@ body {
 #searchInput {
     padding: 5px; /* Add some padding */
     margin-right: 5px; /* Space between input and button */
-}
-.header #searchInput {
-    padding: 5px;
     border: 1px solid #ccc;
+    border-radius: 4px; /* Round corners */
 }
 .header #searchTerm {
     margin-left: 5px;
@@ -80,11 +84,7 @@ body {
     transform: scale(1.05);
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 5.5);
 }
-.logo{
-    height: 70px;
-    width: auto;
-}
-.footer{
+.footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -106,7 +106,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
-button:not(.close) {
+button:not(.close), button:not(.navbar-toggler) {
     width: 120px;
     height: 40px;
     border-radius: 8px;
@@ -161,9 +161,6 @@ button:hover:not(.close) {
 .contact-info span {
     margin: 0 5px; /* Space around the 'or' text */
 }
-.header {
-    background-color: #324b9f;
-}
 .bookEmail button {
     background-color: #324b9f; /* Green background */
     color: #fff; /* White text */
@@ -178,12 +175,46 @@ button:hover:not(.close) {
     background-color: #324b9f; /* Darker green on hover */
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 5.5);
 }
-.header #searchInput{
-    border-radius: 4px; /* Round corners */
-}
 .section{
     margin: auto;
-    width: 50%;
+    width: 90%;
     border: 3px solid #e0e0e0;
     padding: 10px;
+}
+
+@media (max-width: 768px) { /*tablet*/
+    .header{
+        padding: 15px 30px;
+        font-size:1.2em;
+        flex-direction: column;
+        height: auto;
+    }
+    .nav-container{
+        gap: 15px;
+    }
+    .contact-info{
+        flex-direction: column;
+        align-items:center;
+    }
+    .nav-list li{
+        margin:0 10px;
+    }
+    @media (max-widht: 480px) { /*mobile*/
+        .header {
+            padding:10px 20px;
+            font-size: 5vmin;
+            flex-direction:column;
+        }
+        .nav-list {
+            flex-direction:column;
+            align-items:center;  
+        }
+        .nav-list li {
+            margin:5px 0;
+        }
+        .logo {
+            height:40px;
+            margin-bottom:10px;
+        }
+    }
 }

@@ -4,17 +4,26 @@ document.addEventListener("DOMContentLoaded", function() { // # HEADER and FOOTE
     const currentFile = window.location.pathname.split("/").pop();
     const headerHTML = `
             <section class="header">
-                <nav> <div class="nav-container">
-                    <ul class="nav-list">
-                        <li><a href="index.html"><img src="image/logo.png" alt="Logo" class="logo" id="logo"></a></li>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="mortgage.html">Mortgage</a></li>
-                        <li><a id="btnSell" href="#Sell">Sell</a></li>
-                        <li><input type="text" id="searchInput" placeholder="Search..."><input id="searchTerm" type="button" value="Search" onclick="searchTerm()"></li>
-                    </ul>
-                </div>
-                <h2>${currentFile === "index.html" ? "Welcome to BM Real Estate!" : "BM Real Estate Announcements"}</h2>
+            <div class="btnNavDiv">
+                <a href="index.html"><img src="image/logo.png" alt="Logo" class="logo" id="logo"></a>
+                <nav id="menu" class="navbar navbar-expand-lg navbar-light">
+                    <a id="nome" class="navbar-brand" href="#"></a>
+                    <button id="btnToogle" class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="nav-container collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="nav-list navbar-nav ml-auto">
+                            <li class="nav-item"><a class="nav-link" href="mortgage.html">Mortgage</a></li>
+                            <li class="nav-item"><a id="btnSell" class="nav-link" href="#Sell">Sell</a></li>
+                        </ul>
+                    </div>
                 </nav>
+            </div>
+                <h3>${currentFile === "index.html" ? "Welcome to BM Real Estate!" : "BM Real Estate Announcements"}</h3>
+            <div class="searchDiv">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <input id="searchTerm" type="button" value="Search" onclick="searchTerm()"></li>
+            </div>
             </section> `;
     const footerHTML = `
         <section class="footer">
@@ -42,7 +51,33 @@ document.addEventListener("DOMContentLoaded", function() { // # HEADER and FOOTE
     const footerContainer = document.getElementById("showFooter");
     if (footerContainer) footerContainer.innerHTML = footerHTML;
 });
+document.addEventListener("DOMContentLoaded", function(){
+    const links = document.querySelectorAll(".navbar-nav li a:not([href='#'])");
+    const navbarToggler = document.querySelector("button.navbar-toggler");
+    const navItems = document.getElementsByClassName("nav-item");
 
+    // Function to set font size based on toggle state
+    function setFontSizeOnToggle() {
+        const isExpanded = navbarToggler.getAttribute("aria-expanded") === "true";
+        const fontSize = isExpanded ? "20px" : "16px";  // Change font size based on state
+        for (let item of navItems) {
+            item.style.fontSize = fontSize;
+        }
+    }
+
+    // Set font size when each link is clicked and menu closes
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            if (navbarToggler.getAttribute("aria-expanded") === "true") {
+                navbarToggler.click();  // Close the navbar
+            }
+            setFontSizeOnToggle();  // Adjust font size when closed
+        });
+    });
+
+    // Adjust font size when the navbar toggler button is clicked
+    navbarToggler.addEventListener("click", setFontSizeOnToggle);
+});
 
 function displayProduct() {  // # Show description of houses 
     const passedId = new URLSearchParams(window.location.search).get('id');
@@ -168,11 +203,10 @@ function loadIndex() { // # Show houses on index page
         });
     });
 }
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { // call the function loadIndex and displayProduct
     loadIndex();
     displayProduct();
 });
-
 async function searchTerm() { //# Show modal search
     // Clear previous results
     const resultsContainer = document.getElementById("results");
@@ -181,7 +215,7 @@ async function searchTerm() { //# Show modal search
     // Get the search term
     const searchInput = document.getElementById("searchInput").value.trim().toLowerCase();
     
-    if (!searchInput) {
+    if (!searchInput) { //TODO: replace to force required input 
         alert("Please enter a search term.");
         return;
     }
