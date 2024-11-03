@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() { // # HEADER and FOOTE
     const footerContainer = document.getElementById("showFooter");
     if (footerContainer) footerContainer.innerHTML = footerHTML;
 });
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function(){ // #Toggler menu
     const links = document.querySelectorAll(".navbar-nav li a:not([href='#'])");
     const navbarToggler = document.querySelector("button.navbar-toggler");
     const navItems = document.getElementsByClassName("nav-item");
